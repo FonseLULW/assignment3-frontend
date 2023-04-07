@@ -1,5 +1,6 @@
 import React from 'react'
 import "./style.css";
+import { Center, Text, Card, CardBody, CardFooter } from '@chakra-ui/react'
 
 function Page({pokemons, PAGE_SIZE, currentPage}) {
     const startIndex = (currentPage - 1) * PAGE_SIZE;
@@ -11,13 +12,17 @@ function Page({pokemons, PAGE_SIZE, currentPage}) {
         <div className='poke'>
             {
                 pokemons.map(pokemon => 
-                    <div key={pokemon.id}>
-                        <h1>{pokemon.name.english}</h1>
-                        <img 
-                            src={`https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/${x(pokemon.id)}${pokemon.id}.png`}
-                            alt={pokemon.name.english}
-                        />
-                    </div>
+                    <Card maxW='sm' key={pokemon.id}>
+                        <CardBody>
+                            <img 
+                                src={`https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/${x(pokemon.id)}${pokemon.id}.png`}
+                                alt={pokemon.name.english}
+                            />
+                            <Center mt='3'>
+                                <Text fontSize='xl'>{pokemon.name.english}</Text>
+                            </Center>
+                        </CardBody>
+                    </Card>
                 )
             }
         </div>

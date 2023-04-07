@@ -37,7 +37,7 @@ function App() {
         PAGE_SIZE={PAGE_SIZE} 
         currentPage={currentPage}
       />
-      <Center>
+      <Center mt={10}>
         <Pagination 
           pokemons={pokemons}
           PAGE_SIZE={PAGE_SIZE}
