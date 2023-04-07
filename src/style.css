@@ -1,0 +1,36 @@
+html, body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.btnActive{
+    background-color: green;
+    color: white;
+}
+
+#root > h1{
+    text-align: center;
+    margin-top: 0;
+}
+
+.poke {
+    margin: auto;
+    margin-top: 1em;
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    justify-content: center;
+}
+
+.poke h1 {
+    font-size: smaller;
+}
+.poke img {
+    display: block;
+    height: 10vh;
+    aspect-ratio: 1 1;
+    margin: auto;
+}
