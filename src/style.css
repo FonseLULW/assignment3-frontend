@@ -10,6 +10,10 @@ html, body{
     color: white;
 }
 
+#root {
+    height: 100%;
+}
+
 #root > h1{
     text-align: center;
     margin-top: 0;
@@ -33,4 +37,9 @@ html, body{
     height: 10vh;
     aspect-ratio: 1 1;
     margin: auto;
+}
+
+#search {
+    display: flex;
+    flex-direction: row;
 }
