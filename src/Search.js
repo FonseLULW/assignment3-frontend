@@ -1,27 +1,32 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./style.css";
-import { Select, Input, Center, Text } from '@chakra-ui/react'
+import { Select, Input, Center, Text, Checkbox, CheckboxGroup, Stack, useCheckboxGroup } from '@chakra-ui/react'
 
-function Page({types}) {
+function Page({types, setFilterType, setFilterName, setCurrentPage}) {
+    const { value, getCheckboxProps } = useCheckboxGroup({})
+
+    useEffect(() => {
+        setFilterType(value)
+        setCurrentPage(1)
+    }, [value])
+
     return (
-        <Center id="search">
-            <Text fontSize='3xl'>Find Pokemons</Text>
+        <Center>
             <Input 
-                placeholder='Basic usage'
+                placeholder='Find Pokemons'
                 width='auto'
                 id='input'
                 bg="#FFFFFF"
+                mr={10}
             />
-            <Select 
-                placeholder='Select option' 
-                width='auto'
-                id='select'
-                bg="#FFFFFF"
-            >
-                <option value='option1'>Option 1</option>
-                <option value='option2'>Option 2</option>
-                <option value='option3'>Option 3</option>
-            </Select>
+            <CheckboxGroup colorScheme='green'>
+                <Text>{value.sort().join(' and ')}</Text>
+                <Stack spacing={[1, 5]} direction={['column', 'row']}>
+                    {
+                        types.map((pokeType) => <Checkbox key={pokeType} {...getCheckboxProps({value: pokeType})}>{pokeType}</Checkbox>)
+                    }
+                </Stack>
+            </CheckboxGroup>
         </Center>
     )
 }

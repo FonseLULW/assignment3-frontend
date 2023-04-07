@@ -6,13 +6,8 @@ function Pagination({pokemons, PAGE_SIZE, currentPage, setCurrentPage}) {
     const len = Math.ceil(pokemons.length / PAGE_SIZE)
 
     let startIndex, endIndex;
-    if (currentPage > len - PAGE_SIZE) {
-        startIndex = len - PAGE_SIZE;
-        endIndex = len;
-    } else {
-        startIndex = currentPage - 1;
-        endIndex = currentPage + PAGE_SIZE - 1;
-    }
+    startIndex = currentPage - 1;
+    endIndex = currentPage + PAGE_SIZE - 1;
     
     return (
         <div>

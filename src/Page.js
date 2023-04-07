@@ -2,7 +2,7 @@ import React from 'react'
 import "./style.css";
 import { Center, Text, Card, CardBody, CardFooter } from '@chakra-ui/react'
 
-function Page({pokemons, PAGE_SIZE, currentPage}) {
+function Page({pokemons, PAGE_SIZE, currentPage, filterType, filterName}) {
     const startIndex = (currentPage - 1) * PAGE_SIZE;
     const endIndex = startIndex + PAGE_SIZE;
     pokemons = pokemons.slice(startIndex, endIndex);
@@ -11,8 +11,8 @@ function Page({pokemons, PAGE_SIZE, currentPage}) {
     return (
         <div className='poke'>
             {
-                pokemons.map(pokemon => 
-                    <Card maxW='sm' key={pokemon.id} m='2'>
+                pokemons.map(pokemon =>
+                    <Card maxW='sm'  m='2' key={pokemon.id}>
                         <CardBody>
                             <img 
                                 src={`https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/${x(pokemon.id)}${pokemon.id}.png`}
