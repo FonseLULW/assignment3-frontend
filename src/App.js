@@ -3,7 +3,7 @@ import axios from 'axios';
 import Page from './Page'
 import Pagination from './Pagination';
 import Search from './Search';
-import { Select } from '@chakra-ui/react'
+import { Text, Center  } from '@chakra-ui/react'
 
 function App() {
   const [pokemons, setPokemons] = React.useState([]);
@@ -29,20 +29,23 @@ function App() {
   return (
     <>
       <Search />
-      <h1>
-        Page {currentPage}
-      </h1>
+      <Center>
+        <Text fontSize='2xl'>Page {currentPage}</Text>
+      </Center>
       <Page 
         pokemons={pokemons} 
         PAGE_SIZE={PAGE_SIZE} 
         currentPage={currentPage}
       />
-      <Pagination 
-        pokemons={pokemons}
-        PAGE_SIZE={PAGE_SIZE}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
+      <Center>
+        <Pagination 
+          pokemons={pokemons}
+          PAGE_SIZE={PAGE_SIZE}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      </Center>
+
     </>
   );
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import "./style.css";
+import { Button, ButtonGroup } from '@chakra-ui/react'
 
 function Pagination({pokemons, PAGE_SIZE, currentPage, setCurrentPage}) {
     const len = Math.ceil(pokemons.length / PAGE_SIZE)
@@ -17,24 +18,26 @@ function Pagination({pokemons, PAGE_SIZE, currentPage, setCurrentPage}) {
         <div>
             {
                 currentPage !== 1 
-                && <button onClick={() => {setCurrentPage(currentPage - 1)}}>Prev.</button>
+                && <Button colorScheme='teal' size='sm' variant='solid' onClick={() => {setCurrentPage(currentPage - 1)}}>Prev.</Button>
             }
             {
                 Array.from({length: len}, (_,i) => i)
                 .map((number) => 
-                    <button 
+                    <Button 
+                        colorScheme='teal' 
+                        variant={currentPage === number + 1 ? "solid" : "ghost"}
                         key={number + 1} 
                         onClick={() => setCurrentPage(number + 1)}
-                        className={currentPage === number + 1 ? "btnActive" : ""}
+                        className="numbtn"
                     >
                         {number + 1}
-                    </button>
+                    </Button>
                 )
                 .slice(startIndex, endIndex)
             }
             {
                 currentPage !== len 
-                && <button onClick={() => {setCurrentPage(currentPage + 1)}}>Next</button>
+                && <Button colorScheme='teal' size='sm' variant='solid' onClick={() => {setCurrentPage(currentPage + 1)}}>Next</Button>
             }
         </div>
     )
