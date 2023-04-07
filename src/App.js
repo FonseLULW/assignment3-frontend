@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import Display from './Display';
 import Search from './Search';
-import { Text, Center  } from '@chakra-ui/react'
 
 function App() {
   const [pokemons, setPokemons] = React.useState([]);

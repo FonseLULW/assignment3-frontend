@@ -5,11 +5,11 @@ import { Text, Center  } from '@chakra-ui/react'
 
 function Display({pokemons, PAGE_SIZE, filterType, filterName, currentPage, setCurrentPage}) {
     pokemons = pokemons.filter((pokemon) => {
-        if (filterType.length > 0) {
-            return pokemon['type'].some(t => filterType.includes(t))
-        } else {
-            return true
-        }
+        if (filterType.length <= 0) { return true }
+        return pokemon['type'].some(t => filterType.includes(t))
+    }).filter((pokemon) => {
+        if (!filterName) { return pokemon }
+        return pokemon.name.english.toLowerCase().includes(filterName.toLowerCase())
     })
     return (
         <>

@@ -4,11 +4,17 @@ import { Select, Input, Center, Text, Checkbox, CheckboxGroup, Stack, useCheckbo
 
 function Page({types, setFilterType, setFilterName, setCurrentPage}) {
     const { value, getCheckboxProps } = useCheckboxGroup({})
+    const [inputValue, setInputValue] = useState('')
 
     useEffect(() => {
         setFilterType(value)
         setCurrentPage(1)
     }, [value])
+
+    useEffect(() => {
+        setFilterName(inputValue)
+        setCurrentPage(1)
+    }, [inputValue])
 
     return (
         <Center>
@@ -18,6 +24,7 @@ function Page({types, setFilterType, setFilterName, setCurrentPage}) {
                 id='input'
                 bg="#FFFFFF"
                 mr={10}
+                onChange={(e) => {setInputValue(e.target.value)}}
             />
             <CheckboxGroup colorScheme='green'>
                 <Text>{value.sort().join(' and ')}</Text>
