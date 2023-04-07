@@ -12,7 +12,7 @@ function Page({pokemons, PAGE_SIZE, currentPage}) {
         <div className='poke'>
             {
                 pokemons.map(pokemon => 
-                    <Card maxW='sm' key={pokemon.id}>
+                    <Card maxW='sm' key={pokemon.id} m='2'>
                         <CardBody>
                             <img 
                                 src={`https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/${x(pokemon.id)}${pokemon.id}.png`}

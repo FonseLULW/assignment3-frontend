@@ -12,8 +12,10 @@ html, body{
 
 #root {
     height: 100%;
-    margin-left: 4em;
-    margin-right: 4em;
+    padding-left: 4em;
+    padding-right: 4em;
+    padding-top: 2em;
+    background-color: #fbf7f5;
 }
 
 #root > h1{
@@ -45,6 +47,5 @@ html, body{
     display: flex;
     flex-direction: row;
     gap: 1em;
-    margin-top: 2em;
     margin-bottom: 2em;
 }

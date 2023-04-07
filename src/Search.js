@@ -8,15 +8,15 @@ function Page({types}) {
             <Text fontSize='3xl'>Find Pokemons</Text>
             <Input 
                 placeholder='Basic usage'
-                htmlSize={10}
                 width='auto'
-                id='input'    
+                id='input'
+                bg="#FFFFFF"
             />
             <Select 
                 placeholder='Select option' 
-                htmlSize={4} 
                 width='auto'
                 id='select'
+                bg="#FFFFFF"
             >
                 <option value='option1'>Option 1</option>
                 <option value='option2'>Option 2</option>
