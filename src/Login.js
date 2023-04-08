@@ -32,7 +32,7 @@ function Login({SERVER_URL}) {
                 
                 localStorage.setItem("access-token", accessToken);
                 localStorage.setItem("refresh-token", refreshToken);
-                window.location.href = '/';
+                window.location.href = '/admin';
             } else {
                 setErrMsg("Login Failed. Try Again!")
             } 
