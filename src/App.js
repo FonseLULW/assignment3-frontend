@@ -7,12 +7,11 @@ import AdminDashboard from './AdminDashboard';
 function App() {
   const isAdmin = () => {};
   const isAuthed = () => {
-    localStorage.getItem("access-token");
-    localStorage.getItem("refresh-token");
-    localStorage.getItem("username");
-    const role = localStorage.getItem("role");
-    console.log("ROLE:", role);
-    return true
+    const accessToken = localStorage.getItem("access-token");
+    const refreshToken = localStorage.getItem("refresh-token");
+    console.log("Token A:", accessToken);
+    console.log("Token B:", refreshToken);
+    return accessToken && refreshToken ? true : false
   };
 
   return (
