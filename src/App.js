@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from './Home';
@@ -6,7 +7,7 @@ import Login from './Login';
 import AdminDashboard from './AdminDashboard';
 
 function App() {
-  const SERVER_URL = 'http://localhost:8000';
+  const SERVER_URL = process.env.NODE_ENV != 'production' ? 'http://localhost:8000' : 'productionurl';
   const isAdmin = () => {
     const refreshToken = localStorage.getItem("refresh-token");
     if (!refreshToken) return false;
@@ -14,7 +15,7 @@ function App() {
     const decoded = jwt_decode(refreshToken);
     return decoded.user.role == "admin"
   };
-  
+
   const isAuthed = () => {
     const accessToken = localStorage.getItem("access-token");
     const refreshToken = localStorage.getItem("refresh-token");
