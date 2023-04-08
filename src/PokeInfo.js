@@ -23,11 +23,9 @@ import {
 
 function PokeInfo({pokemon}) {
     const { isOpen, onOpen, onClose } = useDisclosure()
-    console.log("POKE", pokemon)
     const x = (id) => id < 10 ? "00" : id < 100 ? "0" : "";
     return (
         <>
-            {/* <Button onClick={onOpen}>Open Modal</Button> */}
             <Card maxW='sm'  m='2' key={pokemon.id} onClick={onOpen}>
                 <CardBody>
                     <img 
@@ -81,17 +79,6 @@ function PokeInfo({pokemon}) {
                                     <Text fontSize='lg'>Speed: {pokemon.base.Speed}</Text>
                                 </GridItem>
                             </Grid>
-
-                            {/* <VStack>
-                                <Text>HP: {pokemon.base.HP}</Text>
-                                <Text>Attack: {pokemon.base.Attack}</Text>
-                                <Text>Defense: {pokemon.base.Defense}</Text>
-                            </VStack>
-                            <VStack>
-                                <Text>Sp. Attack: {pokemon.base['Sp. Attack']}</Text>
-                                <Text>Sp. Defense: {pokemon.base['Sp. Defense']}</Text>
-                                <Text>Speed: {pokemon.base.Speed}</Text>
-                            </VStack> */}
                         </VStack>
                     </ModalBody>
                 </ModalContent>
