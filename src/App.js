@@ -5,6 +5,7 @@ import Login from './Login';
 import AdminDashboard from './AdminDashboard';
 
 function App() {
+  const SERVER_URL = 'http://localhost:8000';
   const isAdmin = () => {};
   const isAuthed = () => {
     const accessToken = localStorage.getItem("access-token");
@@ -20,7 +21,7 @@ function App() {
           <Routes>
             <Route
               path="/login"
-              element={<Login />}
+              element={isAuthed() ? <Navigate to="/" /> : <Login SERVER_URL={SERVER_URL}/>}
             />
             <Route
               path="/admin"
