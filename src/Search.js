@@ -27,7 +27,6 @@ function Page({types, setFilterType, setFilterName, setCurrentPage}) {
                 onChange={(e) => {setInputValue(e.target.value)}}
             />
             <CheckboxGroup colorScheme='green'>
-                <Text>{value.sort().join(' and ')}</Text>
                 <Stack spacing={[1, 5]} direction={['column', 'row']}>
                     {
                         types.map((pokeType) => <Checkbox key={pokeType} {...getCheckboxProps({value: pokeType})}>{pokeType}</Checkbox>)

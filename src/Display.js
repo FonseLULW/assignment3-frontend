@@ -1,7 +1,9 @@
 import React from 'react'
 import Page from './Page'
 import Pagination from './Pagination';
+import PokeInfo from './PokeInfo';
 import { Text, Center  } from '@chakra-ui/react'
+
 
 function Display({pokemons, PAGE_SIZE, filterType, filterName, currentPage, setCurrentPage}) {
     pokemons = pokemons.filter((pokemon) => {
