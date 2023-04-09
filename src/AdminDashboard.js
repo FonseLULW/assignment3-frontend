@@ -6,26 +6,40 @@ import PanelUsers from "./PanelUsers";
 import axios from "axios";
 import PanelTopUsers from "./PanelTopUsers";
 import PanelTopUsersEndpoint from "./PanelTopUsersEndpoint";
+import PanelEndpointErrors from "./PanelEndpointErrors";
 
 function AdminDashboard({SERVER_URL, refreshAccessToken}) {
     const [users, setUsers] = useState([]);
+    const [errors, setErrors] = useState([]);
 
     useEffect(() => {
-        async function getUsers() {
+        async function getInfo() {
             const refreshed = await refreshAccessToken();
             if (!refreshed) {
                 console.log("Cannot refresh access token");
             } else {
-                const res = await axios.get(`${SERVER_URL}/users`, {
-                    headers: {'auth-token-access': localStorage.getItem("access-token")}
-                })
+                let resUsers, resErrors;
+                const accessToken = localStorage.getItem("access-token");
+                [resUsers, resErrors] = await Promise.all([
+                    await axios.get(`${SERVER_URL}/users`, {
+                        headers: {'auth-token-access': accessToken}
+                    }),
+                    await axios.get(`${SERVER_URL}/errors`, {
+                        headers: {'auth-token-access': accessToken}
+                    })
+                ]);
         
-                if (res.status == 200 && !res.data.pokeErrCode) {
-                    setUsers(res.data);
+                if (resUsers.status == 200 && !resUsers.data.pokeErrCode) {
+                    setUsers(resUsers.data);
+                }
+
+                if (resErrors.status == 200 && !resErrors.data.pokeErrCode) {
+                    setErrors(resErrors.data);
                 }
             }
         }
-        getUsers();
+
+        getInfo();
     }, [])
 
     return (
@@ -51,7 +65,7 @@ function AdminDashboard({SERVER_URL, refreshAccessToken}) {
                         <PanelTopUsersEndpoint users={users} />
                     </TabPanel>
                     <TabPanel>
-                    <p>four!</p>
+                        <PanelEndpointErrors errors={errors}/>
                     </TabPanel>
                     <TabPanel>
                     <p>five!</p>
