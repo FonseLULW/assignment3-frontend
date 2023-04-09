@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import "./style.css";
-import { Select, Input, Center, Text, Checkbox, CheckboxGroup, Stack, useCheckboxGroup } from '@chakra-ui/react'
+import { Input, Center, Checkbox, CheckboxGroup, Stack, useCheckboxGroup } from '@chakra-ui/react'
 
 function Page({types, setFilterType, setFilterName, setCurrentPage}) {
     const { value, getCheckboxProps } = useCheckboxGroup({})
@@ -9,12 +9,12 @@ function Page({types, setFilterType, setFilterName, setCurrentPage}) {
     useEffect(() => {
         setFilterType(value)
         setCurrentPage(1)
-    }, [value])
+    }, [value, setCurrentPage, setFilterType])
 
     useEffect(() => {
         setFilterName(inputValue)
         setCurrentPage(1)
-    }, [inputValue])
+    }, [inputValue, setCurrentPage, setFilterName])
 
     return (
         <Center>

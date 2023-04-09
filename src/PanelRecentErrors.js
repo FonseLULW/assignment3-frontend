@@ -3,11 +3,9 @@ import {
     Table,
     Thead,
     Tbody,
-    Tfoot,
     Tr,
     Th,
     Td,
-    TableCaption,
     TableContainer,
     Text,
     Tag
@@ -34,7 +32,7 @@ function PanelRecentErrors({errors}) {
                                 <Td>{new Date(pokeError.date).toLocaleString('en-CA')}</Td>
                                 <Td>{pokeError.name}</Td>
                                 <Td>{pokeError.code}</Td>
-                                <Td><Tag colorScheme="orange">{pokeError.endpointMethod}</Tag> {pokeError.endpoint}</Td>
+                                <Td><Tag colorScheme="orange">{pokeError.endpointMethod + ' ' +  pokeError.endpoint}</Tag></Td>
                             </Tr>
                         )
                     }

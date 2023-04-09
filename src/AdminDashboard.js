@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { Text } from '@chakra-ui/react'
-import { Tabs, TabList, TabPanels, Tab, TabPanel, Center } from '@chakra-ui/react'
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 import PanelUsers from "./PanelUsers";
 import axios from "axios";
 import PanelTopUsers from "./PanelTopUsers";
@@ -30,18 +30,18 @@ function AdminDashboard({SERVER_URL, refreshAccessToken}) {
                     })
                 ]);
         
-                if (resUsers.status == 200 && !resUsers.data.pokeErrCode) {
+                if (resUsers.status === 200 && !resUsers.data.pokeErrCode) {
                     setUsers(resUsers.data);
                 }
 
-                if (resErrors.status == 200 && !resErrors.data.pokeErrCode) {
+                if (resErrors.status === 200 && !resErrors.data.pokeErrCode) {
                     setErrors(resErrors.data);
                 }
             }
         }
 
         getInfo();
-    }, [])
+    })
 
     return (
         <>

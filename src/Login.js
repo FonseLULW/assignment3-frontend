@@ -1,12 +1,11 @@
 import React from "react";
 import axios from 'axios';
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Box, Text, Center, Button } from '@chakra-ui/react'
 import {
     FormControl,
     FormLabel,
     FormErrorMessage,
-    FormHelperText,
     Input
 } from '@chakra-ui/react'
 
@@ -26,7 +25,7 @@ function Login({SERVER_URL}) {
                 password: passwordInput
             })
     
-            if (res.status == 200 && !res.data.pokeErrCode) {
+            if (res.status === 200 && !res.data.pokeErrCode) {
                 const accessToken = res.headers["auth-token-access"];
                 const refreshToken = res.headers["auth-token-refresh"];
                 
@@ -47,9 +46,9 @@ function Login({SERVER_URL}) {
                 <Text fontSize='3xl' mb={10}>Login</Text>
                 <FormControl isRequired isInvalid={errMsg}>
                     <FormLabel>Username</FormLabel>
-                    <Input placeholder='Username' value={usernameInput} onChange={handleUsernameInputChange}/>
+                    <Input id="loginU" placeholder='Username' value={usernameInput} onChange={handleUsernameInputChange}/>
                     <FormLabel mt={2}>Password</FormLabel>
-                    <Input type="password" value={passwordInput} onChange={handlePasswordInputChange}/>
+                    <Input id="loginP" type="password" value={passwordInput} onChange={handlePasswordInputChange}/>
 
                     <FormErrorMessage>{errMsg}</FormErrorMessage>
                     

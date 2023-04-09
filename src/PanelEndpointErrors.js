@@ -3,15 +3,11 @@ import {
     Table,
     Thead,
     Tbody,
-    Tfoot,
     Tr,
     Th,
     Td,
-    TableCaption,
     TableContainer,
     Text,
-    Tag,
-    Center,
     VStack
 } from '@chakra-ui/react'
 
@@ -24,7 +20,6 @@ function PanelEndpointErrors({errors}) {
     });
 
     pokeErrors = Object.entries(pokeErrors);
-    console.log(pokeErrors);
     return (
         
         <TableContainer>

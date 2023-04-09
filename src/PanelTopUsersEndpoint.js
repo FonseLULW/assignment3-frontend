@@ -3,14 +3,11 @@ import {
     Table,
     Thead,
     Tbody,
-    Tfoot,
     Tr,
     Th,
     Td,
-    TableCaption,
     TableContainer,
     Text,
-    Tag
 } from '@chakra-ui/react'
 
 function PanelTopUsersEndpoint({users}) {
