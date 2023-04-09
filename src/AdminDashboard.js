@@ -7,6 +7,7 @@ import axios from "axios";
 import PanelTopUsers from "./PanelTopUsers";
 import PanelTopUsersEndpoint from "./PanelTopUsersEndpoint";
 import PanelEndpointErrors from "./PanelEndpointErrors";
+import PanelRecentErrors from "./PanelRecentErrors";
 
 function AdminDashboard({SERVER_URL, refreshAccessToken}) {
     const [users, setUsers] = useState([]);
@@ -65,10 +66,10 @@ function AdminDashboard({SERVER_URL, refreshAccessToken}) {
                         <PanelTopUsersEndpoint users={users} />
                     </TabPanel>
                     <TabPanel>
-                        <PanelEndpointErrors errors={errors}/>
+                        <PanelEndpointErrors errors={errors} />
                     </TabPanel>
                     <TabPanel>
-                    <p>five!</p>
+                        <PanelRecentErrors errors={errors} />
                     </TabPanel>
                 </TabPanels>
             </Tabs>
