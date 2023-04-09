@@ -31,7 +31,7 @@ function PanelTopUsers({users}) {
                         users
                         .sort((a, b) => b.timesLoggedIn - a.timesLoggedIn)
                         .map(user => 
-                            <Tr>
+                            <Tr key={user.username}>
                                 <Td>{new Date(user.date).toLocaleString('en-CA')}</Td>
                                 <Td>{user.username}</Td>
                                 <Td>{user.email}</Td>

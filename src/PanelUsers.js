@@ -31,7 +31,7 @@ function PanelUsers({users}) {
                         users
                         .sort((a, b) => new Date(b.date) - new Date(a.date))
                         .map(user => 
-                            <Tr>
+                            <Tr key={user.username}>
                                 <Td>{new Date(user.date).toLocaleString('en-CA')}</Td>
                                 <Td>{user.username}</Td>
                                 <Td>{user.email}</Td>

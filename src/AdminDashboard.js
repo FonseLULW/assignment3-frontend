@@ -5,6 +5,7 @@ import { Tabs, TabList, TabPanels, Tab, TabPanel, Center } from '@chakra-ui/reac
 import PanelUsers from "./PanelUsers";
 import axios from "axios";
 import PanelTopUsers from "./PanelTopUsers";
+import PanelTopUsersEndpoint from "./PanelTopUsersEndpoint";
 
 function AdminDashboard({SERVER_URL, refreshAccessToken}) {
     const [users, setUsers] = useState([]);
@@ -20,7 +21,6 @@ function AdminDashboard({SERVER_URL, refreshAccessToken}) {
                 })
         
                 if (res.status == 200 && !res.data.pokeErrCode) {
-                    console.log(res.data);
                     setUsers(res.data);
                 }
             }
@@ -48,7 +48,7 @@ function AdminDashboard({SERVER_URL, refreshAccessToken}) {
                         <PanelTopUsers users={users}/>
                     </TabPanel>
                     <TabPanel>
-                    <p>three!</p>
+                        <PanelTopUsersEndpoint users={users} />
                     </TabPanel>
                     <TabPanel>
                     <p>four!</p>
