@@ -22,6 +22,20 @@ function App() {
     return accessToken && refreshToken ? true : false
   };
 
+  const refreshAccessToken = async () => {
+    const res = await axios.post(`${SERVER_URL}/requestNewAccessToken`, {}, {
+      headers: {"auth-token-refresh": localStorage.getItem("refresh-token")}
+    });
+
+    if (res.status == 200 && !res.data.pokeErrCode) {
+      const accessToken = res.headers['auth-token-access']
+      localStorage.setItem("access-token", accessToken);
+      return true;
+    }
+    return false;
+    
+  }
+
   return (
     <>
       <BrowserRouter>
@@ -32,7 +46,7 @@ function App() {
             />
             <Route
               path="/admin"
-              element={isAdmin() ? <AdminDashboard /> : <Navigate to="/" />}
+              element={isAdmin() ? <AdminDashboard SERVER_URL={SERVER_URL} refreshAccessToken={refreshAccessToken}/> : <Navigate to="/" />}
             />
             <Route 
               path="/"

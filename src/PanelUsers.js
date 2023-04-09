@@ -9,10 +9,11 @@ import {
     Td,
     TableCaption,
     TableContainer,
-    Text
+    Text,
+    Tag
 } from '@chakra-ui/react'
 
-function PanelUsers() {
+function PanelUsers({users}) {
     return (
         <TableContainer>
             <Table variant='striped' colorScheme="blackAlpha" mt={5}>
@@ -25,18 +26,16 @@ function PanelUsers() {
                     </Tr>
                 </Thead>
                 <Tbody>
-                    <Tr>
-                        <Td>fonse</Td>
-                        <Td>fonse@fonse.com</Td>
-                        <Td>User</Td>
-                        <Td>20</Td>
-                    </Tr>
-                    <Tr>
-                        <Td>fonse</Td>
-                        <Td>fonse@fonse.com</Td>
-                        <Td>User</Td>
-                        <Td>20</Td>
-                    </Tr>
+                    {
+                        users.map(user => 
+                            <Tr>
+                                <Td>{user.username}</Td>
+                                <Td>{user.email}</Td>
+                                <Td><Tag colorScheme="orange">{user.role}</Tag></Td>
+                                <Td>{user.timesLoggedIn}</Td>
+                            </Tr>
+                        )
+                    }
                 </Tbody>
             </Table>
         </TableContainer>
