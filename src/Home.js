@@ -3,7 +3,7 @@ import axios from 'axios';
 import Display from './Display';
 import Search from './Search';
 
-function Home({SERVER_URL}) {
+function Home({SERVER_URL, refreshAccessToken}) {
     const [pokemons, setPokemons] = React.useState([]);
     const [types, setTypes] = React.useState([]);
     const [filterName, setFilterName] = React.useState('');
@@ -49,7 +49,18 @@ function Home({SERVER_URL}) {
     }, [])
 
     const onPokemonClick = async (pokemon) => {
-        console.log("Clicked!", pokemon.name.english);
+        const refreshed = await refreshAccessToken();
+        if (!refreshed) {
+            alert("Cannot refresh access token. Try again later!");
+        } else {
+            const res = await axios.get(`${SERVER_URL}/api/v2/pokemon?name=${pokemon.name.english}`, {
+                headers: {'auth-token-access': localStorage.getItem("access-token")}
+            })
+            console.log(res.data);
+            if (res.status !== 200 || res.data.pokeErrCode) {
+                console.log("Couldn't update pokemon click");
+            }
+        }
     }
 
     return (

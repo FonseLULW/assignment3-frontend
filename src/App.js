@@ -7,13 +7,13 @@ import Login from './Login';
 import AdminDashboard from './AdminDashboard';
 
 function App() {
-  const SERVER_URL = process.env.NODE_ENV != 'production' ? 'http://localhost:8000' : 'productionurl';
+  const SERVER_URL = process.env.NODE_ENV !== 'production' ? 'http://localhost:8000' : 'productionurl';
   const isAdmin = () => {
     const refreshToken = localStorage.getItem("refresh-token");
     if (!refreshToken) return false;
 
     const decoded = jwt_decode(refreshToken);
-    return decoded.user.role == "admin"
+    return decoded.user.role === "admin"
   };
 
   const isAuthed = () => {
@@ -27,7 +27,7 @@ function App() {
       headers: {"auth-token-refresh": localStorage.getItem("refresh-token")}
     });
 
-    if (res.status == 200 && !res.data.pokeErrCode) {
+    if (res.status === 200 && !res.data.pokeErrCode) {
       const accessToken = res.headers['auth-token-access']
       localStorage.setItem("access-token", accessToken);
       return true;
@@ -50,7 +50,7 @@ function App() {
             />
             <Route 
               path="/"
-              element={isAuthed() ? <Home SERVER_URL={SERVER_URL}/> : <Navigate to="/login" />}
+              element={isAuthed() ? <Home SERVER_URL={SERVER_URL} refreshAccessToken={refreshAccessToken}/> : <Navigate to="/login" />}
             />
           </Routes>
       </BrowserRouter>
