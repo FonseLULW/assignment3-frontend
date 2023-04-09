@@ -13,7 +13,7 @@ import {
     Tag
 } from '@chakra-ui/react'
 
-function PanelUsers({users}) {
+function PanelTopUsers({users}) {
     return (
         <TableContainer>
             <Table variant='striped' colorScheme="blackAlpha" mt={5}>
@@ -29,7 +29,7 @@ function PanelUsers({users}) {
                 <Tbody>
                     {
                         users
-                        .sort((a, b) => new Date(b.date) - new Date(a.date))
+                        .sort((a, b) => b.timesLoggedIn - a.timesLoggedIn)
                         .map(user => 
                             <Tr>
                                 <Td>{new Date(user.date).toLocaleString('en-CA')}</Td>
@@ -46,4 +46,4 @@ function PanelUsers({users}) {
     )
 }
 
-export default PanelUsers;
+export default PanelTopUsers;

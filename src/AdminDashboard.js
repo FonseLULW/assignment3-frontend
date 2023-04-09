@@ -4,6 +4,7 @@ import { Text } from '@chakra-ui/react'
 import { Tabs, TabList, TabPanels, Tab, TabPanel, Center } from '@chakra-ui/react'
 import PanelUsers from "./PanelUsers";
 import axios from "axios";
+import PanelTopUsers from "./PanelTopUsers";
 
 function AdminDashboard({SERVER_URL, refreshAccessToken}) {
     const [users, setUsers] = useState([]);
@@ -44,7 +45,7 @@ function AdminDashboard({SERVER_URL, refreshAccessToken}) {
                         <PanelUsers users={users}/>
                     </TabPanel>
                     <TabPanel>
-                    <p>two!</p>
+                        <PanelTopUsers users={users}/>
                     </TabPanel>
                     <TabPanel>
                     <p>three!</p>
