@@ -50,7 +50,7 @@ function App() {
             />
             <Route 
               path="/"
-              element={isAuthed() ? <Home /> : <Navigate to="/login" />}
+              element={isAuthed() ? <Home SERVER_URL={SERVER_URL}/> : <Navigate to="/login" />}
             />
           </Routes>
       </BrowserRouter>

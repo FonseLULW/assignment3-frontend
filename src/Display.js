@@ -5,7 +5,7 @@ import PokeInfo from './PokeInfo';
 import { Text, Center  } from '@chakra-ui/react'
 
 
-function Display({pokemons, PAGE_SIZE, filterType, filterName, currentPage, setCurrentPage}) {
+function Display({pokemons, PAGE_SIZE, filterType, filterName, currentPage, setCurrentPage, onPokemonClick}) {
     pokemons = pokemons.filter((pokemon) => {
         if (filterType.length <= 0) { return true }
         return pokemon['type'].some(t => filterType.includes(t))
@@ -22,6 +22,7 @@ function Display({pokemons, PAGE_SIZE, filterType, filterName, currentPage, setC
                 pokemons={pokemons} 
                 PAGE_SIZE={PAGE_SIZE} 
                 currentPage={currentPage}
+                onPokemonClick={onPokemonClick}
             />
             <Center mt={10}>
                 <Pagination 

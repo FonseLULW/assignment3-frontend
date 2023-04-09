@@ -3,7 +3,7 @@ import axios from 'axios';
 import Display from './Display';
 import Search from './Search';
 
-function Home() {
+function Home({SERVER_URL}) {
     const [pokemons, setPokemons] = React.useState([]);
     const [types, setTypes] = React.useState([]);
     const [filterName, setFilterName] = React.useState('');
@@ -48,6 +48,10 @@ function Home() {
         }
     }, [])
 
+    const onPokemonClick = async (pokemon) => {
+        console.log("Clicked!", pokemon.name.english);
+    }
+
     return (
         <>
             <Search
@@ -63,6 +67,7 @@ function Home() {
                 filterName={filterName}
                 currentPage={currentPage}
                 setCurrentPage={setCurrentPage}
+                onPokemonClick={onPokemonClick}
             />
         </>
     )
