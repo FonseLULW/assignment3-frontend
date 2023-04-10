@@ -7,7 +7,7 @@ import Login from './Login';
 import AdminDashboard from './AdminDashboard';
 
 function App() {
-  const SERVER_URL = process.env.NODE_ENV !== 'production' ? 'http://localhost:8000' : 'productionurl';
+  const SERVER_URL = process.env.NODE_ENV !== 'production' ? 'http://localhost:8000' : 'https://assignment3-comp4537-backend.onrender.com';
   const isAdmin = () => {
     const refreshToken = localStorage.getItem("refresh-token");
     if (!refreshToken) return false;
