@@ -1,6 +1,6 @@
 import React from 'react'
 import "./style.css";
-import { Button, ButtonGroup } from '@chakra-ui/react'
+import { Button } from '@chakra-ui/react'
 
 function Pagination({pokemons, PAGE_SIZE, currentPage, setCurrentPage}) {
     const len = Math.ceil(pokemons.length / PAGE_SIZE)
